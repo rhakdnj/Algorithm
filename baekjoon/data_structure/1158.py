@@ -1,18 +1,18 @@
+# https://www.acmicpc.net/problem/1158
+# deque rotate
+# join(self, __iterable: Iterable[str]) -> str: ...
 import sys
-input = sys.stdin.readline
+from collections import deque
+
+def input() :
+    return sys.stdin.readline().rstrip()
 
 N , K = map(int, input().split())
+lst = []    # list
+q = deque([i+1 for i in range(N)])
 
-arr = [i + 1 for i in range(N)]
-answer = [ ]
-index = 0
+while len(q) != 0:
+    q.rotate(-K)
+    lst.append(q.pop())
 
-# index
-for i in range(N):
-    index += K - 1;
-    if index >= len(arr):
-        index %= len(arr)
-    answer.append(str(arr.pop(index)))
-
-print('<', ', '.join(answer), '>', sep = '')
-
+print('<' + ', '.join(map(str, lst)) + '>')
