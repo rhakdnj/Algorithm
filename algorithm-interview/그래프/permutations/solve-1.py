@@ -3,13 +3,13 @@ from typing import *
 
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
-        res = []
+        results = []
         prev_elements = []
 
         def dfs(elements):
             # Add result when leaf node
             if len(elements) == 0:
-                res.append(prev_elements[:])
+                results.append(prev_elements[:])
                 return
 
             # Permutation creation recursive call
@@ -22,7 +22,7 @@ class Solution:
                 prev_elements.pop()
 
         dfs(nums)
-        return res
+        return results
 
 
 if __name__ == "__main__":
