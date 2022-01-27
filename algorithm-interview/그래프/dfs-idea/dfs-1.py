@@ -18,3 +18,5 @@ def recursive_dfs(v, discovered=[]):
 
 
 print(f'recursive dfs: {recursive_dfs(1)}')
+
+
