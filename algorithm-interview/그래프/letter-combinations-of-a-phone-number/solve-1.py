@@ -5,10 +5,9 @@ class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
 
         def dfs(index, path):
-
             # Backtracking if navigating to the end
             if len(path) == len(digits):
-                res.append(path)
+                result.append(path)
                 return
 
             # Repeat input digit by digit
@@ -30,10 +29,10 @@ class Solution:
                '8': 'tuv',
                '9': 'wxyz',
                }
-        res = []
+        result = []
         dfs(0, "")
 
-        return res
+        return result
 
 
 if __name__ == '__main__':

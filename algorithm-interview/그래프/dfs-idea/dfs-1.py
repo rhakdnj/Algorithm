@@ -1,3 +1,5 @@
+from typing import *
+
 graph = {
     1: [2, 3, 4],
     2: [5],
@@ -9,7 +11,7 @@ graph = {
 }
 
 
-def recursive_dfs(v, discovered=[]):
+def recursive_dfs(v, discovered=[]) -> List[int]:
     discovered.append(v)
     for w in graph[v]:
         if w not in discovered:
@@ -18,5 +20,3 @@ def recursive_dfs(v, discovered=[]):
 
 
 print(f'recursive dfs: {recursive_dfs(1)}')
-
-

@@ -20,3 +20,5 @@ def iterative_bfs(start_v):
                 queue.append(w)
     return discovered
 
+
+print(f'iterative bfs: {iterative_bfs(1)}')
