@@ -21,5 +21,5 @@ while queue:
     else:
         queue.popleft()
         queue.rotate(-q)
-        print(queue.popleft())
+        print(queue2.popleft())
         queue2.rotate(-q)
