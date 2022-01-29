@@ -31,6 +31,7 @@ if stack:
     print(0)
     exit(0)
 
+
 # [open bracket] + Integer + Integer => [open bracket] + Integer
 # compress (add) Integers
 def compress():
@@ -42,9 +43,11 @@ def compress():
         b, integer2 = stack[-2]
         if a or b:
             break
+        # None None 일 때
         stack.pop()
         stack.pop()
         stack.append((None, integer1 + integer2))
+
 
 for ch in s:
     # open bracket -> append ( open bracket, ~ )
@@ -52,10 +55,10 @@ for ch in s:
         stack.append(('(', 2))
     elif ch == '[':
         stack.append(('[', 3))
-    elif ch == ')' or ch == ']': # Must Be len(stack) ≥ 1
+    elif ch == ')' or ch == ']':    # Must Be len(stack) ≥ 1
         last1, last2 = stack.pop()
         # Case 1 : ~~ open bracket
-        if last1 != None:
+        if last1 is not None:
             stack.append((None, last2))
         # Case 2 : ~~ open bracket, Integer,
         else:
