@@ -25,7 +25,7 @@ class Solution:
 
             return True
 
-        for x in graph:
+        for x in list(graph):
             if not dfs(x):
                 return False
 
