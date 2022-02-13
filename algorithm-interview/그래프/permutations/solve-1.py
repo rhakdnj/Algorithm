@@ -10,7 +10,6 @@ class Solution:
             # Add result when leaf node
             if len(elements) == 0:
                 results.append(prev_elements[:])
-                return
 
             # Permutation creation recursive call
             for e in elements:
@@ -28,4 +27,4 @@ class Solution:
 if __name__ == "__main__":
     solution = Solution()
     nums = [1, 2, 3]
-    solution.permute(nums)
+    print(solution.permute(nums))

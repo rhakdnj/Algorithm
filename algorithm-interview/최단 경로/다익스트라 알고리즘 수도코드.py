@@ -22,8 +22,3 @@ function Dijkstra(graph, source):
 
     return dist, prev
 """
-
-graph = dict()
-times = [[2, 1, 1]]
-for u, v, w in times:
-    graph[u].append((v, w))
