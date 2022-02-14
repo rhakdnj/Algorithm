@@ -4,7 +4,6 @@ from collections import defaultdict
 
 class Solution:
     def findItinerary(self, tickets: List[List[str]]) -> List[str]:
-
         graph = defaultdict(list)
         for a, b in sorted(tickets):
             graph[a].append(b)
@@ -20,5 +19,6 @@ class Solution:
 
 
 solution = Solution()
-tickets = [["JFK","SFO"],["JFK","ATL"],["SFO","ATL"],["ATL","JFK"],["ATL","SFO"]]
+# tickets = [["JFK","SFO"],["JFK","ATL"],["SFO","ATL"],["ATL","JFK"],["ATL","SFO"]]
+tickets = [["JFK","KUL"],["JFK","NRT"], ['NRT', "JFK"]]
 solution.findItinerary(tickets)
