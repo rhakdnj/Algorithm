@@ -21,10 +21,6 @@ class Solution:
             results.append(current_max)
 
 
-
-
-
-
 if __name__ == "__main__":
     solution = Solution()
     nums = [1, 3, -1, -3, 5, 3, 6, 7]
