@@ -6,7 +6,7 @@ class Solution:
         def binary_search(left, right):
             if left <= right:
                 # left + right -> overflow may occur
-                mid = (left + right) // 2
+                mid = left + (right - left) // 2
 
                 if nums[mid] < target:
                     return binary_search(mid + 1, right)
