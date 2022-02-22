@@ -5,6 +5,7 @@ class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
         for start in range(len(gas)):
             fuel = 0
+            can_travel = True
             for i in range(start, len(gas) + start):
                 index = i % len(gas)
 
