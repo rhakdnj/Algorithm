@@ -2,7 +2,8 @@ from math import ceil
 
 
 def solution(progresses, speeds):
-    days_left = list(map(lambda x: (ceil((100 - progresses[x]) / speeds[x])), range(len(progresses))))
+    days_left = list(map(lambda x: (ceil((100 - progresses[x]) / speeds[x])),
+                         range(len(progresses))))
     count = 1
     ret_list = []
 
