@@ -1,5 +1,5 @@
-def bfs(begin, target, words, visited):
-    count = 0
+def dfs(begin, target, words, visited):
+    cnt = 0
     stack = [(begin, 0)]
     while stack:
         cur, depth = stack.pop()
@@ -23,6 +23,6 @@ def solution(begin, target, words):
     if target not in words:
         return 0
     visited = [False] * len(words)
-    answer = bfs(begin, target, words, visited)
+    answer = dfs(begin, target, words, visited)
     return answer
 
