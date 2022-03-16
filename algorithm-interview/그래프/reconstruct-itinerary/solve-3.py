@@ -8,6 +8,7 @@ class Solution:
         for a, b in sorted(tickets):
             graph[a].append(b)
 
+        # dfs를 stack으로 구현
         route, stack = [], ['JFK']
         while stack:
             # 반복으로 스택을 구성하되 막히는 부분에서 풀어내는 처리
@@ -20,5 +21,5 @@ class Solution:
 
 solution = Solution()
 # tickets = [["JFK","SFO"],["JFK","ATL"],["SFO","ATL"],["ATL","JFK"],["ATL","SFO"]]
-tickets = [["JFK","KUL"],["JFK","NRT"], ['NRT', "JFK"]]
+tickets = [["JFK", "KUL"], ["JFK", "NRT"], ['NRT', "JFK"]]
 solution.findItinerary(tickets)
