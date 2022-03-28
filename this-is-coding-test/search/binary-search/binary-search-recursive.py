@@ -22,7 +22,7 @@ def binary_search(array, target, start, end):
 
 
 n, target = map(int, input().split())
-# 전체 원소 입력받기
+# 전체 원소 입력 받기
 array = list(map(int, input().split()))
 
 # 이진 탐색 수행 결과 출력
