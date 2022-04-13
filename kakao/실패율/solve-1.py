@@ -2,7 +2,7 @@ def solution(N, stages):
     result = {}
     denominator = len(stages)
     for stage in range(1, N + 1):
-        if denominator != 0:
+        if denominator:
             count = stages.count(stage)
             result[stage] = count / denominator
             denominator -= count
