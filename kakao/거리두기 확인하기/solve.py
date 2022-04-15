@@ -42,26 +42,3 @@ def solution(places):
         if status:
             answer.append(1)
     return answer
-
-
-print(solution([["POOOP", "OXXOX", "OPXPX", "OOXOX", "POXXP"], ["POOPX", "OXPXP", "PXXXO", "OXXXO", "OOOPP"],
-          ["PXOPX", "OXOXP", "OXPOX", "OXXOP", "PXPOX"], ["OOOXX", "XOOOX", "OOOXX", "OXOOX", "OOOOO"],
-          ["PXPXP", "XPXPX", "PXPXP", "XPXPX", "PXPXP"]]))
-'''
-대기실 5 개 
-각 대기실의 크기 5 * 5
-거리두기 = 맨허튼 거리 > 2
-
-예외)
-맨허튼 거리 < 2
-파티션 -> ok
-
-
-0, 0
-0, 4
-2, 1
-4, 1
-4, 4
-
-
-'''
