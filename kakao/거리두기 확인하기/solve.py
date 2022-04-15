@@ -35,12 +35,9 @@ def solution(places):
                             status = False
                             break
                     else:
-                        try:
-                            if place[k_x + 1][k_y] == 'O' or place[k_x][k_y - 1] == 'O':
-                                answer.append(0)
-                                status = False
-                                break
-                        except IndexError:
+                        if place[k_x + 1][k_y] == 'O' or place[k_x][k_y - 1] == 'O':
+                            answer.append(0)
+                            status = False
                             break
         if status:
             answer.append(1)
