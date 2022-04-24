@@ -1,5 +1,3 @@
-# 출처: 
-https://velog.io/@pm1100tm/Python-lambda-%EB%9E%8C%EB%8B%A4
 
 ## 람다식
 
@@ -164,3 +162,5 @@ print( check_password_using_lambda('123') )            # SHORT_PASSWORD
 print( check_password_using_lambda('12356789f') )      # NO_CAPITAL_LETTER_PASSWORD
 print( check_password_using_lambda('123456789fF') )    # True
 ```
+### 출처: 
+https://velog.io/@pm1100tm/Python-lambda-%EB%9E%8C%EB%8B%A4
