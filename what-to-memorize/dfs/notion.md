@@ -4,7 +4,6 @@
 2. 스택의 최상단 노드에 방문하지 않은 인접한 노드가 하나라도 있으면 그 노드를 스택에 넣고 방문 처리합니다. 방문하지 않은 인접 노드가 없으면 스택에서 최상단 노드를 꺼냅니다.
 3. 더 이상 2번의 과정을 수행할 수 없을 때까지 반복합니다.
 
-
 ```python
 def dfs(graph, v, visited):
     # 현재 노드를 방문 처리
@@ -13,6 +12,7 @@ def dfs(graph, v, visited):
     for i in graph[v]:
         if not visited[i]:
             dfs(graph, i, visited)
+
 
 graph = [
     [],
