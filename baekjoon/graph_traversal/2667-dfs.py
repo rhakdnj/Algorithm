@@ -1,5 +1,4 @@
 import sys
-from collections import deque
 
 
 def input():
@@ -8,10 +7,12 @@ def input():
 
 # dfs
 def dfs(x, y):
+    # 종료 조건
     if x < 0 or y < 0 or x >= n or y >= n:
         return False
     if graph[x][y] == 0:
         return False
+    # 재귀 호출
     if graph[x][y] == 1:
         global cnt
         cnt += 1
@@ -21,7 +22,6 @@ def dfs(x, y):
         dfs(x, y - 1)
         dfs(x, y + 1)
         return True
-    return False
 
 
 n = int(input())
