@@ -21,7 +21,7 @@ def bfs(x, y):
                 graph[nx][ny] = graph[x][y] + 1
                 queue.append((nx, ny))
 
-    return graph[n-1][m-1]
+    return graph[n - 1][m - 1]
 
 
 n, m = map(int, input().split())
