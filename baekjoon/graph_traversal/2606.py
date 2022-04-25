@@ -1,6 +1,3 @@
-# https://www.acmicpc.net/problem/2606
-# dfs
-
 import sys
 from collections import defaultdict
 
