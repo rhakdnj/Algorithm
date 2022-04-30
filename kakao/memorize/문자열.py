@@ -16,5 +16,7 @@ inner for문에서 행을 가변적으로 가져가면서 진행
 빈 문자열을 continue하는 상황
 if not num:
     continue
-
+또는 
+if len(num):
+num이 빈 문자열이 아닐 때 
 """
