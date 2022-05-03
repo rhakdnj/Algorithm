@@ -131,17 +131,19 @@ for _ in range(m):
     # a 번 노드에서 b번 노드로 가는 비용 -> c
     graph[a].append((b, c))
 
-
 def dijkstra(start):
     heap = []
     heappush(heap, (0, start))
     distance[start] = 0
     while heap:
         dist, cur = heappop(heap)
+        # 현재 노드가 이미 처리된 적이 있는 노드라면 무시 
         if distance[cur] < dist:
             continue
+        # 현재 노드와 연결된 다른 노드들을 확인
         for i in graph[cur]:
-            cost = dist[cur] + i[1]
+            # 현재 노드를 거쳐서, 다른 노드로 이동하는 거리가 더 짧은 경우
+            cost = distance[cur] + i[1]
             if cost < dist[i[0]]:
                 distance[i[0]] = cost
                 heappush(heap, (cost, i[0]))
