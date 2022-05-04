@@ -1,26 +1,22 @@
 from itertools import permutations
-
-
-def calc(priority, n, expression):
-    if n == 2:
-        return str(eval(expression))
-    if priority[n] == '*':
-        res = eval('*'.join([calc(priority, n + 1, e) for e in expression.split('*')]))
-    if priority[n] == '+':
-        res = eval('+'.join([calc(priority, n + 1, e) for e in expression.split('+')]))
-    if priority[n] == '-':
-        res = eval('-'.join([calc(priority, n + 1, e) for e in expression.split('-')]))
-    return str(res)
+import re
 
 
 def solution(expression):
-    answer = 0
     priorities = (list(permutations(['*', '-', '+'], 3)))
+    expression = re.split('([*+-])', expression)
+    result = []
     for priority in priorities:
-        res = int(calc(priority, 0, expression))
-        answer = max(answer, abs(res))
+        # *, -, +
+        exp = expression[:]
+        for operator in priority:
+            while operator in exp:
+                idx = exp.index(operator)
+                exp[idx - 1] = str(eval(exp[idx - 1] + operator + exp[idx + 1]))
+                del exp[idx: idx + 2]
+        result.append(abs(int(exp[0])))
 
-    return answer
+    return max(result)
 
 
 print(solution("100-200*300-500+20"))

@@ -27,4 +27,4 @@ def check(place: list):
 
 
 def solution(places):
-    return [check(place) for place in places]
+    return [distance(place) for place in places]

@@ -27,6 +27,6 @@ def solution(n, k):
     nums = num_str.split('0')
 
     for value in nums:
-        if len(value) and check(int(value)):
+        if len(value) and distance(int(value)):
             answer += 1
     return answer

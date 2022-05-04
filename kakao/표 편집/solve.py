@@ -32,6 +32,7 @@ def solution(n, k, cmd):
                 up.next = down
             if down:
                 down.prev = up
+                cur = down
             else:
                 cur = up
         else:

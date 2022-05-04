@@ -18,7 +18,7 @@ def solution(user_id, banned_id):
     p = permutations(user_id, len(banned_id))
 
     for users in p:
-        if not check(users, banned_id):
+        if not distance(users, banned_id):
             continue
         else:
             users = set(users)

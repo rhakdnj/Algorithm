@@ -37,7 +37,7 @@ def solution(relation: list):
     candidates = []
 
     for i in range(1, 1 << col_size):
-        if check(relation, row_size, col_size, i):
+        if distance(relation, row_size, col_size, i):
             candidates.append(i)
 
     candidates = sorted(candidates, key=cmp_to_key(compare))

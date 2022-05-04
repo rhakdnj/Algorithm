@@ -1,44 +1,45 @@
+from collections import deque
+
+
+def bfs(place, x, y):
+    visited = [[0] * 5 for _ in range(5)]
+    visited[x][y] = True
+    q = deque()
+    q.append((x, y, 0))
+    dx, dy = [-1, 1, 0, 0], [0, 0, -1, 1]
+    while q:
+        x, y, cnt = q.popleft()
+        if cnt > 2:
+            continue
+        if cnt != 0 and place[x][y] == 'P':
+            return False
+        for i in range(4):
+            new_x, new_y = x + dx[i], y + dy[i]
+            if new_x < 0 or new_x >= 5 or new_y < 0 or new_y >= 5:
+                continue
+            if place[new_x][new_y] == 'X':
+                continue
+            if visited[new_x][new_y]:
+                continue
+            visited[new_x][new_y] = True
+            q.append((new_x, new_y, cnt + 1))
+    return True
+
+
+def check(place):
+    for i in range(5):
+        for j in range(5):
+            if place[i][j] == 'P':
+                if not bfs(place, i, j):
+                    return False
+    return True
+
+
 def solution(places):
     answer = []
     for place in places:
-        p_list = []
-        status = True
-        for i in range(5):
-            for j in range(5):
-                if place[i][j] == 'P':
-                    p_list.append((i, j))
-
-        for k in range(len(p_list) - 1):
-            if not status:
-                break
-            k_x, k_y = p_list[k]
-            for l in range(k + 1, len(p_list)):
-                l_x, l_y = p_list[l]
-                if abs(k_x - l_x) + abs(k_y - l_y) == 1:
-                    answer.append(0)
-                    status = False
-                    break
-                elif abs(k_x - l_x) + abs(k_y - l_y) == 2:
-                    if k_x - l_x == -2:
-                        if place[k_x + 1][k_y] == 'O':
-                            answer.append(0)
-                            status = False
-                            break
-                    elif k_y - l_y == -2:
-                        if place[k_x][k_y + 1] == 'O':
-                            answer.append(0)
-                            status = False
-                            break
-                    elif k_x - l_x == -1 and k_y - l_y == -1:
-                        if place[k_x + 1][k_y] == 'O' or place[k_x][k_y + 1] == 'O':
-                            answer.append(0)
-                            status = False
-                            break
-                    else:
-                        if place[k_x + 1][k_y] == 'O' or place[k_x][k_y - 1] == 'O':
-                            answer.append(0)
-                            status = False
-                            break
-        if status:
+        if distance(place):
             answer.append(1)
+        else:
+            answer.append(0)
     return answer

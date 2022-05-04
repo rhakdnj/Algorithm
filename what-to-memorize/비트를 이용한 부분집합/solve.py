@@ -15,3 +15,9 @@ def print_subsets(arr, n):
 set_data = ['A', 'B', 'C', 'D']
 
 print_subsets(set_data, 4)
+
+print(1<<0)
+print(1<<1)
+print(1<<2)
+print(1<<3)
+print(1<<4)

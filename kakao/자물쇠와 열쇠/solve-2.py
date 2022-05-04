@@ -34,6 +34,6 @@ def solution(key, lock):
                         arr[offset + i][offset + j] = lock[i][j]
 
                 match(arr, key, rot, r, c)
-                if check(arr, offset, n):
+                if distance(arr, offset, n):
                     return True
     return False
