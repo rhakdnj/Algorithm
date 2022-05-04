@@ -10,9 +10,9 @@ def check(a: str, left, right):
 s = input()
 n = len(s)
 
-if not check(s, 0, n - 1):
+if not distance(s, 0, n - 1):
     print(n)
-elif not check(s, 0, n - 2):
+elif not distance(s, 0, n - 2):
     print(n - 1)
 else:
     print(-1)
