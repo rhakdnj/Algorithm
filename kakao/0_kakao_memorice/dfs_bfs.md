@@ -47,3 +47,55 @@ def solution(board):
     bfs(0, 0, 0, 'D')
     return min(answer)
 ```
+
+### 거리두기 확인한기
+
+1. P일 때만 bfs로 주변 거리 2에 P가 존재하는지 check
+
+```python
+from collections import deque
+
+dx, dy = [-1, 1, 0, 0], [0, 0, -1, 1]
+
+
+def bfs(place, x, y):
+    q = deque([(x, y, 0)])
+    visited = [[0] * 5 for _ in range(5)]
+    visited[x][y] = True
+    while q:
+        x, y, cnt = q.popleft()
+        if cnt > 2:
+            continue
+        if place[x][y] == 'P' and cnt != 0:
+            return False
+        for i in range(4):
+            nx, ny = x + dx[i], y + dy[i]
+            if nx < 0 or nx >= 5 or ny < 0 or ny >= 5:
+                continue
+            if place[nx][ny] == 'X':
+                continue
+            if not visited[nx][ny]:
+                visited[nx][ny] = True
+                q.append((nx, ny, cnt + 1))
+    return True
+
+
+def check(place):
+    for i in range(5):
+        for j in range(5):
+            if place[i][j] == 'P':
+                if not bfs(place, i, j):
+                    return False
+    return True
+
+
+def solution(places):
+    answer = []
+    for place in places:
+        if check(place):
+            answer.append(1)
+        else:
+            answer.append(0)
+    return answer
+```
+

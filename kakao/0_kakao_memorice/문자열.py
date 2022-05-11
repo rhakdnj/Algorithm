@@ -73,3 +73,53 @@ if not num:
 if len(num):
 num이 빈 문자열이 아닐 때 
 """
+
+# 다트 게임
+"""
+문자열의 10을 한번에 묶는 방법
+
+a = dartResult.replace('10', '.')
+dart_result = [i if i != '.' else '10' for i in a]
+"""
+
+# 튜플
+"""
+def solution(s):
+    # 리스트로 나옴
+    s = eval(s.replace("{", "[").replace("}", "]"))
+    print(type(s))
+    answer = list({num: 0 for k in sorted(s, key=lambda x: len(x)) for num in k}.keys())
+    return answer
+
+
+solution("{{1,2,3},{2,1},{1,2,4,3},{2}}")
+"""
+
+# 방금 그곡
+"""
+각 음은 1분에 1개씩 재생된다. 
+
+def replace_special(m):
+    return m.replace('C#', 'c').replace('D#', 'd').replace('F#', 'f')\
+            .replace('G#', 'g').replace('A#', 'a')
+
+라디오에서 재생된 시간이 제일 긴 음악 제목을 반환한다. 
+재생된 시간도 같을 경우 먼저 입력된 음악 제목을 반환한다.
+
+-> 정렬 조건
+if m in result:
+    answer.append((name, play_time, cnt))
+    cnt += 1
+
+sorted(answer, key=lambda x: (-x[1], x[2]))[0][0]    
+"""
+
+# 압축
+"""
+dic = dict(zip("ABCDEFGHIJKLMNOPQRSTUVWXYZ", range(1, 27)))
+"""
+
+# 파일명 정렬(re)
+"""
+
+"""

@@ -41,3 +41,31 @@ def solution(gems):
             answer[1] = e
     return answer
 ```
+
+
+### 징검 다리 건너기
+
+1. stones 배열의 크기는 1 이상 200,000 이하입니다.(완전탐색은 빅오 초과)
+2. 이진탐색으로 mid값을 구하고 체크(줄어드는 숫자가 완탐:1 , 더 빠름)
+3. left == right일 때 while문에서 나옴
+
+```python
+def solution(stones, k):
+    left, right = 1, max(stones)
+    while left <= right:
+        mid = (left + right) // 2
+        cnt = 0
+        for stone in stones:
+            if stone - mid <= 0:
+                cnt += 1
+            else:
+                cnt = 0
+            if cnt >= k:
+                break
+        if cnt >= k:
+            right = mid - 1
+        else:
+            left = mid + 1
+
+    return left
+```
