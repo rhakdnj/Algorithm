@@ -30,4 +30,4 @@ def solution(n: int, info: list) -> list:
     return answer
 
 
-solution(9, [0, 0, 1, 2, 0, 1, 1, 1, 1, 1, 1])
+print(solution(5, [2, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0]))
