@@ -1,41 +1,33 @@
-import sys
+def solution(row, col, direct):
+    global answer, graph, visited
 
+    if not visited[row][col]:
+        answer += 1
+        visited[row][col] = True
 
-def input():
-    return sys.stdin.readline().rstrip()
+    for i in range(4):
+        left = (direct - i - 1) % 4
+        new_row, new_col, = row + dx[left], col + dy[left]
+
+        if 0 <= new_row < n and 0 <= new_col < m:
+            if graph[new_row][new_col] == 0 and not visited[new_row][new_col]:
+                solution(new_row, new_col, left)
+                return
+
+    back = (direct + 2) % 4
+    new_row, new_col, = row + dx[back], col + dy[back]
+
+    if graph[new_row][new_col]:
+        return
+    solution(new_row, new_col, direct)
 
 
 n, m = map(int, input().split())
 r, c, d = map(int, input().split())
 graph = [list(map(int, input().split())) for _ in range(n)]
-visited = [[False] * m for _ in range(n)]
-dx, dy = (-1, 0, 1, 0), (0, 1, 0, -1)
+visited = [[0] * m for _ in range(n)]
 answer = 0
+dx, dy = [-1, 0, 1, 0], [0, 1, 0, -1]
 
-
-def dfs(x, y, d):
-    global answer
-
-    if not visited[x][y]:
-        answer += 1
-        visited[x][y] = True
-
-    for i in range(4):
-        nd = (d - i - 1) % 4
-        nx, ny = x + dx[nd], y + dy[nd]
-
-        if graph[nx][ny] == 0 and not visited[nx][ny]:
-            dfs(nx, ny, nd)
-            return
-
-    nd = (d - 2) % 4
-    nx, ny = x + dx[nd], y + dy[nd]
-
-    if graph[nx][ny] == 1:
-        return
-
-    dfs(nx, ny, d)
-
-
-dfs(r, c, d)
+solution(r, c, d)
 print(answer)
