@@ -1,28 +1,28 @@
 import sys
 
-input = sys.stdin.readline
+
+def input():
+    return sys.stdin.readline().rstrip()
+
 
 n = int(input())
 crane_list = list(map(int, input().split()))
-crane_list.sort(reverse=True)
 m = int(input())
-box_list = sorted(list(map(int, input().split())))
+box_list = list(map(int, input().split()))
+crane_list.sort(reverse=True)
 box_list.sort(reverse=True)
 
-answer = [0] * n
-
+# 배로 옮길 수 없는 경우
 if box_list[0] > crane_list[0]:
     print(-1)
-    quit()
-time = (m - 1) // n + 1
-box = 0
-while box < m:
-    for i in range(n):
-        if answer[i] < time and crane_list[i] >= box_list[box]:
-            answer[i] += 1
-            box += 1
-            break
-        if crane_list[i] < box_list[box]:
-            time += 1
-            break
-print(max(answer))
+    sys.exit()
+else:
+    time = 0
+    while box_list:
+        for crane in crane_list:
+            for box in box_list:
+                if crane >= box:
+                    box_list.remove(box)
+                    break
+        time += 1
+    print(time)
