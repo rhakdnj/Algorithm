@@ -33,6 +33,7 @@ def solution(n, students):
         temp.sort(key=lambda x: (-x[0], -x[1], x[2], x[3]))
         graph[temp[0][2]][temp[0][3]] = student[0]
 
+    students.sort(key=lambda x: x[0])
     answer = 0
 
     for i in range(n):
@@ -45,6 +46,7 @@ def solution(n, students):
                         res += 1
             if res != 0:
                 answer += 10 ** (res - 1)
+    print(graph)
     print(answer)
 
 
