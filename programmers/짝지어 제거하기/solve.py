@@ -1,15 +1,17 @@
 def solution(s):
-    arr = [chr(i) * 2 for i in range(ord('a'), ord('z') + 1)]
-    answer = -1
-    flag = True
+    answer = []
 
-    while flag and s:
-        before = len(s)
-        for i in arr:
-            if i in s:
-                s = s.replace(i, '')
+    for i in range(len(s)):
+        answer.append(s[i])
+        if len(answer) >= 2:
+            if answer[-1] == answer[-2]:
+                answer.pop()
+                answer.pop()
+    if len(answer) >= 2:
+        if answer[-1] == answer[-2]:
+            answer.pop()
+            answer.pop()
 
-        if before == len(s):
-            return 0
+    return 1 if not answer else 0
 
-    return 1
+
