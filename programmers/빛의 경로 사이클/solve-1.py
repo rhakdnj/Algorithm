@@ -7,7 +7,7 @@ def solution(grid: list):
         res = 0
         while not visited[x][y][d]:
             visited[x][y][d] = 1
-            x, y = (x + dx[d]) % n, (y + dy[d]) % m
+            x, y = (x + dx[d]) % n, (y + dy[d]) % m  # mod 계산
             if grid[x][y] == 'L':
                 d = (d + 1) % 4
             elif grid[x][y] == 'R':
