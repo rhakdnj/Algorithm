@@ -9,14 +9,15 @@ input = lambda: sys.stdin.readline().rstrip()
 a, b, c = map(int, input().split())
 
 
-def sol(m: int, n: int) -> int:
+def sol(x: int, y: int) -> int:
     global c
-    if n == 1: return m % c
-    ret = sol(m, n // 2)
+    if y == 1:
+        return x % c
+    ret = sol(x, y // 2)
     ret = (ret * ret) % c
 
-    if b % 2:
-        ret = (ret * a) % c
+    if y % 2:
+        ret = (ret * x) % c
     return ret
 
 
