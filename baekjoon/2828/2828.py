@@ -1,6 +1,7 @@
 """
 https://www.acmicpc.net/problem/2828
 사과 담기 게임
+그림을 그려서 풀기
 """
 import sys
 
@@ -15,17 +16,17 @@ def solution(a: list):
     ret = 0
 
     left = 1
-    for i in a:
+    for temp in a:
         right = left + m - 1
-        if left <= i <= right:
+        if left <= temp <= right:
             continue
         else:
-            if i < left:
-                ret += left - i
-                left = i
+            if temp < left:
+                ret += left - temp
+                left = temp
             else:
-                ret += i - right
-                left += i - right
+                ret += temp - right
+                left += temp - right
     print(ret)
 
 
