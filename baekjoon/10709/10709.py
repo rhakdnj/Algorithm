@@ -15,22 +15,14 @@ def solution():
         arr.append(list(input()))
 
     for i in range(h):
-        v = 1
-        flag = False
         for j in range(w):
             if arr[i][j] == 'c':
                 arr[i][j] = 0
-                if v == 1:
-                    flag = True
-                else:
-                    flag = True
-                    v = 1
-            else:
-                if flag:
-                    arr[i][j] = v
-                    v += 1
-                if v == 1:
-                    flag = False
+                cnt = 1
+                while j <= w - 2 and arr[i][j + 1] == '.':
+                    arr[i][j + 1] = cnt
+                    cnt += 1
+                    j += 1
 
     for i in range(h):
         for j in range(w):
