@@ -6,41 +6,44 @@ import sys
 
 input = lambda: sys.stdin.readline().rstrip()
 n = int(input())
-a, b, a_sum, b_sum = 0, 0, 0, 0
+team_1, team_2 = 0, 0
+sum_1, sum_2 = 0, 0
 prev = ''
 
 
-def change_to_sec(s):
-    return int(s[0: 2]) * 60 + int(s[3: 5])
+def change_to_sec(s: str):
+    m, sec = s.split(':')
+    return int(m) * 60 + int(sec)
 
 
-def change_to_time(t):
+def change_to_time_format(t: int):
     m = '00' + str(t // 60)
-    s = '00' + str(t % 60)
-    return m[len(m) - 2: len(m)] + ":" + s[len(s) - 2: len(s)]
+    sec = '00' + str(t % 60)
+    return m[len(m) - 2: len(m)] + ':' + sec[len(sec) - 2: len(sec)]
 
 
 def solution():
-    global n, a, b, a_sum, b_sum, prev
+    global n, team_1, team_2, sum_1, sum_2, prev
+    for _ in range(n):
+        team, s = input().split()
+        if team_1 > team_2:
+            sum_1 += change_to_sec(s) - change_to_sec(prev)
+        elif team_2 > team_1:
+            sum_2 += change_to_sec(s) - change_to_sec(prev)
 
-    for i in range(n):
-        num, s = input().split()
-        if a > b:
-            a_sum += change_to_sec(s) - change_to_sec(prev)
-        elif b > a:
-            b_sum += change_to_sec(s) - change_to_sec(prev)
-
-        if num == '1':
-            a += 1
-        else:
-            b += 1
+        if team == '1':
+            team_1 += 1
+        elif team == '2':
+            team_2 += 1
         prev = s
-    if a > b:
-        a_sum += change_to_sec('48:00') - change_to_sec(prev)
-    elif b > a:
-        b_sum += change_to_sec('48:00') - change_to_sec(prev)
-    print(change_to_time(a_sum))
-    print(change_to_time(b_sum))
+
+    if team_1 > team_2:
+        sum_1 += change_to_sec('48:00') - change_to_sec(prev)
+    elif team_2 > team_1:
+        sum_2 += change_to_sec('48:00') - change_to_sec(prev)
+
+    print(change_to_time_format(sum_1))
+    print(change_to_time_format(sum_2))
 
 
 solution()
