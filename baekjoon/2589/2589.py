@@ -9,14 +9,14 @@ input = lambda: sys.stdin.readline().rstrip()
 dy, dx = (-1, 0, 1, 0), (0, 1, 0, -1)
 N, M = 0, 0
 arr, visited = [], []
-ret = 0
 
 
-def bfs(y: int, x: int) -> None:
-    global N, M, arr, visited, dy, dx, ret
+def bfs(y: int, x: int) -> int:
+    global N, M, arr, visited, dy, dx
 
     visited[y][x] = 1
     dq = deque([(y, x)])
+    cnt = 0
     while dq:
         y, x = dq.popleft()
 
@@ -28,22 +28,24 @@ def bfs(y: int, x: int) -> None:
                 continue
             visited[ny][nx] = visited[y][x] + 1
             dq.append((ny, nx))
-            ret = max(ret, visited[ny][nx])
+            cnt = max(cnt, visited[ny][nx])
+    return cnt - 1
 
 
 # 육지 L, 바다 W
 def solution(n, m):
-    global N, M, arr, visited, ret
+    global N, M, arr, visited
 
     N, M = n, m
     arr = [list(input()) for _ in range(N)]
 
+    ret = 0
     for i in range(N):
         for j in range(M):
             if arr[i][j] == 'L':
                 visited = [[0] * M for _ in range(N)]
-                bfs(i, j)
-    print(ret - 1)
+                ret = max(ret, bfs(i, j))
+    print(ret)
 
 
 solution(*map(int, input().split()))
