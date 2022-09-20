@@ -33,7 +33,7 @@ def solution():
             adj[v].append(i)
 
     r = int(input())
-    if r == 0:
+    if r == root:
         print(0)
     else:
         print(dfs(root))
