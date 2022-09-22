@@ -1,44 +1,41 @@
-import sys
-
-input = lambda: sys.stdin.readline().rstrip()
-n, ret = 0, -int(1e9)
-nums = []
-ops = []  # 연산자
+n = int(input())
+s = input()
+nums, ops = [], []  # 숫자, 연산자
+ret = -int(1e9)
 
 
-def oper(a: str, b: int, c: int) -> int:
-    if a == '+':
-        return b + c
-    if a == '-':
-        return b - c
-    if a == '*':
-        return b * c
+def oper(op: str, a: int, b: int) -> int:
+    if op == '+':
+        return a + b
+    if op == '-':
+        return a - b
+    if op == '*':
+        return a * b
 
 
-def go(here, num):
-    global nums, ops, ret
+def go(here: int, value: int):
+    global ret
     if here == len(nums) - 1:
-        ret = max(ret, num)
+        ret = max(ret, value)
         return
 
-    go(here + 1, oper(ops[here], num, nums[here + 1]))
+    go(here + 1, oper(ops[here], value, nums[here + 1]))
 
     if here + 2 <= len(nums) - 1:
         temp = oper(ops[here + 1], nums[here + 1], nums[here + 2])
-        go(here + 2, oper(ops[here], num, temp))
+        go(here + 2, oper(ops[here], value, temp))
 
 
-def solution(num, expression: str):
-    global n, nums, ops, ret
-    n = num
+def solution():
+    global n, ops, nums, ret
     for i in range(n):
-        if i % 2 == 0:
-            nums.append(int(expression[i]))
+        if i % 2:
+            ops.append(s[i])
         else:
-            ops.append(expression[i])
+            nums.append(int(s[i]))
 
     go(0, nums[0])
     print(ret)
 
 
-solution(int(input()), input())
+solution()
