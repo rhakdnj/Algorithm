@@ -16,12 +16,12 @@ def solution():
     cnt = 0
 
     dq = deque()
-    dq.append((y1, x1))
+    dq.append(1000 * y1 + x1)
     while arr[y2][x2] != '0':
         cnt += 1
         temp = deque()
         while len(dq):
-            y, x = dq.popleft()
+            y, x = divmod(dq.popleft(), 1000)
             for i in range(4):
                 ny, nx = y + dy[i], x + dx[i]
                 if ny < 0 or ny >= n or nx < 0 or nx >= m or visited[ny][nx]:
@@ -29,9 +29,9 @@ def solution():
                 visited[ny][nx] = cnt
                 if arr[ny][nx] != '0':
                     arr[ny][nx] = '0'
-                    temp.append((ny, nx))
+                    temp.append(1000 * ny + nx)
                 else:
-                    dq.append((ny, nx))
+                    dq.append(1000 * ny + nx)
         dq = temp
 
     print(visited[y2][x2])
