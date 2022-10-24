@@ -2,7 +2,6 @@ from heapq import heappush, heappop
 
 if __name__ == '__main__':
     ans = 0
-    d = [False for _ in range(10001)]
     n = int(input())
 
     li = list()
