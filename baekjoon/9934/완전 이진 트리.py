@@ -1,31 +1,33 @@
-k = int(input())
-a = list(map(int, input().split(' ')))
-ret = [[] for _ in range(11)]
-
-
-def go(s: int, e: int, level: int):
-    if s > e:
+def go(start, end, depth):
+    if start > end:
         return
-    if s == e:
-        ret[level].append(a[s])
+    if start == end:
+        answer[depth].append(buildings[start])
         return
-    mid = (s + e) // 2
-    ret[level].append(a[mid])
-    go(s, mid - 1, level + 1)
-    go(mid + 1, e, level + 1)
+
+    mid = (start + end) // 2
+    answer[depth].append(buildings[mid])
+    go(start, mid - 1, depth + 1)
+    go(mid + 1, end, depth + 1)
 
 
 def solution():
-    end = 2 ** k - 1
-    go(0, end - 1, 1)
+    start = 0
+    end = 2 ** k - 1 - 1
+    depth = 1
+    go(start, end, depth)
 
-    for j in ret:
-        if not j:
+    for li in answer:
+        if not li:
             continue
-        else:
-            for i in j:
-                print(i, end=" ")
+        for element in li:
+            print(element, end=" ")
         print()
 
 
-solution()
+if __name__ == '__main__':
+    k = int(input())
+    buildings = list(map(int, input().split()))
+    answer = [[] for _ in range(11)]
+
+    solution()
