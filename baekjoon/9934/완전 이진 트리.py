@@ -31,4 +31,3 @@ if __name__ == '__main__':
     answer = [[] for _ in range(11)]
 
     solution()
-
