@@ -1,22 +1,29 @@
+"""
+크기는 모두 같고 녹화 순서가 바뀌지 않아야 함
+모두 저장할 수 있다면 크기를 줄이고 저장할 수 없다면 크기를 늘리는 방식으로 크기의 최솟값을 알 수 있다.
+"""
 import sys
 
 input = lambda: sys.stdin.readline().rstrip()
 
 
-def solution():
-    start, end = max(arr), sum(arr)
+def solution(n, m, lst):
+    start, end = max(lst), sum(lst)
 
     while start <= end:
         mid = (start + end) // 2
+
         cnt, sum_ = 0, 0
-        for i in range(N):
-            if sum_ + arr[i] > mid:
-                cnt += 1
+        for lesson in arr:
+            if sum_ + lesson > mid:
                 sum_ = 0
-            sum_ += arr[i]
+                cnt += 1
+            sum_ += lesson
+
         if sum_ != 0:
             cnt += 1
-        if cnt > M:
+
+        if cnt > m:
             start = mid + 1
         else:
             end = mid - 1
@@ -25,6 +32,6 @@ def solution():
 
 
 if __name__ == '__main__':
-    N, M = map(int, input().split())  # 강의의 수 N, M
+    N, M = map(int, input().split())
     arr = list(map(int, input().split()))
-    solution()
+    solution(N, M, arr)
