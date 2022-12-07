@@ -7,19 +7,20 @@ input = lambda: sys.stdin.readline().rstrip()
 def solution(v, e):
     graph = [[] for _ in range(v + 1)]
     visited = [False for _ in range(v + 1)]
-    check = [0 for _ in range(v + 1)]
-    is_possible = True
+    set_ = [0 for _ in range(v + 1)]
 
     for _ in range(e):
-        start, end = map(int, input().split())
-        graph[start].append(end)
-        graph[end].append(start)
+        node1, node2 = map(int, input().split())
+        graph[node1].append(node2)
+        graph[node2].append(node1)
 
-    def BFS(start):
-        nonlocal is_possible
+    is_bipartite = True
+
+    def BFS(start_node):
+        nonlocal is_bipartite
         dq = deque()
-        dq.append(start)
-        visited[start] = True
+        dq.append(start_node)
+        visited[start_node] = True
 
         while dq:
             curr = dq.popleft()
@@ -28,26 +29,28 @@ def solution(v, e):
                 if not visited[next_]:
                     dq.append(next_)
                     visited[next_] = True
-                    check[next_] = (check[curr] + 1) % 2
-                elif check[curr] == check[next_]:
-                    is_possible = False
+                    set_[next_] = (set_[curr] + 1) % 2
+                elif set_[next_] == set_[curr]:
+                    is_bipartite = False
+                    return
 
     for i in range(1, v + 1):
-        if is_possible:
+        if is_bipartite:
             BFS(i)
         else:
-            break
+            print("NO")
+            return
 
-    if is_possible:
-        print("YES")
-    else:
-        print("NO")
+    print("YES")
+    return
 
 
 if __name__ == '__main__':
-    K = int(input())
-    for _ in range(K):
+    test_case = int(input())
+
+    for _ in range(test_case):
         solution(*map(int, input().split()))
+
 """
 노드의 집합을 2개로 나누는데, 인접한 노드끼리 집합이 되지 않도록 적절하게 임의로 분할할 수 있다고 합니다.
 잘 생각해 보면 트리의 경우에는 항상 이분 그래프가 된다는 것을 알 수 있습니다.
